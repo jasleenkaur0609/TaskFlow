@@ -1,56 +1,177 @@
-# Welcome to your Expo app 👋
+# TaskFlow Mobile 📱
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+TaskFlow Mobile is the React Native mobile application for **TaskFlow**, a full-stack task management platform designed to help users organize, prioritize, and track their daily tasks.
 
-## Get started
+The mobile application is being developed using **React Native, Expo, Expo Router, and TypeScript**. It will communicate with the TaskFlow backend through REST APIs for authentication, task management, user profiles, and productivity data.
 
-1. Install dependencies
+> 🚧 **Status: In Development**
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 📌 About TaskFlow
 
-   ```bash
-   npx expo start
-   ```
+TaskFlow is a productivity and task management application that provides users with a simple and focused way to manage their daily tasks.
 
-In the output, you'll find options to open the app in a
+The mobile application will allow users to:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Create and manage tasks
+- Set priorities
+- Add categories
+- Set due dates
+- Track task completion
+- Search and filter tasks
+- View productivity statistics
+- Manage their profile
+- Securely authenticate with their account
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+The project is being developed incrementally, starting with the mobile application foundation and navigation, followed by authentication, task management, backend integration, database integration, and production features.
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## ✨ Current Features
 
-```bash
-npm run reset-project
-```
+The current mobile application includes:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- React Native project setup
+- Expo configuration
+- TypeScript
+- Expo Router
+- File-based navigation
+- Splash screen
+- Onboarding screens
+- Login screen
+- Registration route
+- Responsive mobile layouts
+- iPhone testing using Expo Go
 
-### Other setup steps
+---
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## 🚀 Planned Features
 
-## Learn more
+### 🔐 Authentication
 
-To learn more about developing your project with Expo, look at the following resources:
+- User registration
+- User login
+- Secure password handling
+- JWT-based authentication
+- Persistent authentication
+- Logout
+- Protected routes
+- Form validation
+- Authentication error handling
+- Forgot password functionality
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### ✅ Task Management
 
-## Join the community
+- Create tasks
+- Edit tasks
+- Delete tasks
+- Mark tasks as completed
+- Reopen completed tasks
+- Set task priorities
+- Add task categories
+- Add task descriptions
+- Set due dates
+- View task details
 
-Join our community of developers creating universal apps.
+### 🔎 Search & Filtering
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Search tasks by title
+- Filter by category
+- Filter by priority
+- Filter by status
+- Filter by due date
+- Sort tasks
+- Search and filter results
+
+### 📊 Dashboard
+
+The dashboard will provide an overview of the user's productivity, including:
+
+- Total tasks
+- Pending tasks
+- Completed tasks
+- High-priority tasks
+- Tasks due today
+- Upcoming tasks
+- Overdue tasks
+- Completion statistics
+
+### 👤 Profile
+
+Planned profile functionality includes:
+
+- View profile
+- Update profile
+- Account settings
+- Logout
+- Authentication management
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+| Technology | Purpose |
+|---|---|
+| React Native | Mobile application development |
+| Expo | React Native development platform |
+| Expo Router | File-based navigation |
+| TypeScript | Type-safe development |
+| Axios | REST API communication |
+| AsyncStorage | Local data and authentication persistence |
+
+## Backend
+
+| Technology | Purpose |
+|---|---|
+| Node.js | Backend runtime |
+| Express.js | REST API framework |
+| JWT | Authentication |
+| bcrypt | Password hashing |
+
+## Database
+
+| Technology | Purpose |
+|---|---|
+| MongoDB | Application data storage |
+
+## Development Tools
+
+| Tool | Purpose |
+|---|---|
+| Visual Studio Code | Development |
+| npm | Package management |
+| Git | Version control |
+| GitHub | Source code hosting |
+| Expo Go | Mobile testing |
+
+---
+
+# 🏗️ Application Architecture
+
+```text
+                    ┌─────────────────────┐
+                    │      TaskFlow       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │   React Native App  │
+                    │        + Expo       │
+                    └──────────┬──────────┘
+                               │
+                               │ Axios
+                               │ HTTP Requests
+                               ▼
+                    ┌─────────────────────┐
+                    │   Node.js + Express │
+                    │      REST API       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │       MongoDB       │
+                    │      Database       │
+                    └─────────────────────┘

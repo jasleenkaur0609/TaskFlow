@@ -17,10 +17,8 @@ export default function LoginScreen() {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    console.log('Login pressed');
-    console.log('Email:', email);
-    console.log('Password:', password);
-  };
+  router.replace('/dashboard');
+};
 
   const handleRegister = () => {
     router.push('/register');
@@ -76,11 +74,14 @@ export default function LoginScreen() {
               />
             </View>
 
-            <Pressable style={styles.forgotButton}>
-              <Text style={styles.forgotText}>
-                Forgot Password?
-              </Text>
-            </Pressable>
+            <Pressable
+  style={styles.forgotButton}
+  onPress={() => router.push('/forgot-password')}
+>
+  <Text style={styles.forgotText}>
+    Forgot Password?
+  </Text>
+</Pressable>
 
             <Pressable
               style={styles.loginButton}

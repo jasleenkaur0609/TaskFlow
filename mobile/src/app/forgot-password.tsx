@@ -12,23 +12,14 @@ import {
 } from 'react-native';
 import { router } from 'expo-router';
 
-export default function RegisterScreen() {
-  const [name, setName] = useState('');
+export default function ForgotPasswordScreen() {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleRegister = () => {
-    console.log('Register pressed');
-    console.log({
-      name,
-      email,
-      password,
-      confirmPassword,
-    });
+  const handleResetPassword = () => {
+    console.log('Password reset requested for:', email);
   };
 
-  const handleLogin = () => {
+  const handleBackToLogin = () => {
     router.replace('/login');
   };
 
@@ -41,7 +32,6 @@ export default function RegisterScreen() {
         <ScrollView
           contentContainerStyle={styles.scrollContent}
           keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
         >
           {/* Header */}
           <View style={styles.header}>
@@ -54,31 +44,16 @@ export default function RegisterScreen() {
 
             <Text style={styles.logo}>TaskFlow</Text>
 
-            <Text style={styles.title}>Create Account</Text>
+            <Text style={styles.title}>Forgot Password?</Text>
 
             <Text style={styles.subtitle}>
-              Create your account and start organizing your day.
+              Enter the email address associated with your account and
+              we'll send you instructions to reset your password.
             </Text>
           </View>
 
           {/* Form */}
           <View style={styles.form}>
-            {/* Name */}
-            <View style={styles.inputGroup}>
-              <Text style={styles.label}>Full Name</Text>
-
-              <TextInput
-                style={styles.input}
-                placeholder="Enter your full name"
-                placeholderTextColor="#999999"
-                value={name}
-                onChangeText={setName}
-                autoCapitalize="words"
-                autoCorrect={false}
-              />
-            </View>
-
-            {/* Email */}
             <View style={styles.inputGroup}>
               <Text style={styles.label}>Email</Text>
 
@@ -94,56 +69,23 @@ export default function RegisterScreen() {
               />
             </View>
 
-            {/* Password */}
-            <View style={styles.inputGroup}>
-              <Text style={styles.label}>Password</Text>
-
-              <TextInput
-                style={styles.input}
-                placeholder="Create a password"
-                placeholderTextColor="#999999"
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry
-                autoCapitalize="none"
-              />
-            </View>
-
-            {/* Confirm Password */}
-            <View style={styles.inputGroup}>
-              <Text style={styles.label}>Confirm Password</Text>
-
-              <TextInput
-                style={styles.input}
-                placeholder="Confirm your password"
-                placeholderTextColor="#999999"
-                value={confirmPassword}
-                onChangeText={setConfirmPassword}
-                secureTextEntry
-                autoCapitalize="none"
-              />
-            </View>
-
-            {/* Register Button */}
             <Pressable
-              style={styles.registerButton}
-              onPress={handleRegister}
+              style={styles.resetButton}
+              onPress={handleResetPassword}
             >
-              <Text style={styles.registerButtonText}>
-                CREATE ACCOUNT
+              <Text style={styles.resetButtonText}>
+                SEND RESET LINK
               </Text>
             </Pressable>
 
-            {/* Login */}
-            <View style={styles.loginContainer}>
-              <Text style={styles.loginText}>
-                Already have an account?
+            <Pressable
+              style={styles.loginButton}
+              onPress={handleBackToLogin}
+            >
+              <Text style={styles.loginButtonText}>
+                Back to Login
               </Text>
-
-              <Pressable onPress={handleLogin}>
-                <Text style={styles.loginLink}>Login</Text>
-              </Pressable>
-            </View>
+            </Pressable>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -165,10 +107,11 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     paddingHorizontal: 24,
     paddingVertical: 30,
+    justifyContent: 'center',
   },
 
   header: {
-    marginBottom: 30,
+    marginBottom: 35,
   },
 
   backButton: {
@@ -192,7 +135,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     color: '#222222',
-    marginBottom: 30,
+    marginBottom: 35,
   },
 
   title: {
@@ -202,9 +145,9 @@ const styles = StyleSheet.create({
   },
 
   subtitle: {
-    marginTop: 10,
+    marginTop: 12,
     fontSize: 16,
-    lineHeight: 24,
+    lineHeight: 25,
     color: '#666666',
   },
 
@@ -213,7 +156,7 @@ const styles = StyleSheet.create({
   },
 
   inputGroup: {
-    marginBottom: 18,
+    marginBottom: 20,
   },
 
   label: {
@@ -234,36 +177,30 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAFAFA',
   },
 
-  registerButton: {
+  resetButton: {
     height: 54,
     borderRadius: 12,
     backgroundColor: '#222222',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 8,
   },
 
-  registerButtonText: {
+  resetButtonText: {
     color: '#FFFFFF',
     fontSize: 15,
     fontWeight: '700',
   },
 
-  loginContainer: {
-    flexDirection: 'row',
+  loginButton: {
+    height: 54,
     justifyContent: 'center',
-    marginTop: 24,
-    gap: 5,
+    alignItems: 'center',
+    marginTop: 12,
   },
 
-  loginText: {
+  loginButtonText: {
+    color: '#333333',
     fontSize: 15,
-    color: '#666666',
-  },
-
-  loginLink: {
-    fontSize: 15,
-    color: '#222222',
-    fontWeight: '700',
+    fontWeight: '600',
   },
 });

@@ -60,9 +60,9 @@ export default function DashboardScreen() {
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Today's Tasks</Text>
 
-          <Pressable onPress={() => console.log('View all pressed')}>
-            <Text style={styles.viewAll}>View All</Text>
-          </Pressable>
+          <Pressable onPress={() => router.push('/tasks')}>
+  <Text style={styles.viewAll}>View All</Text>
+</Pressable>
         </View>
 
         {/* Task Card 1 */}
@@ -124,9 +124,9 @@ export default function DashboardScreen() {
 
         {/* Add Task Button */}
         <Pressable
-          style={styles.addButton}
-          onPress={() => console.log('Add task pressed')}
-        >
+  style={styles.addButton}
+  onPress={() => router.push('/add-task')}
+>
           <Text style={styles.addButtonText}>+ Add New Task</Text>
         </Pressable>
       </ScrollView>

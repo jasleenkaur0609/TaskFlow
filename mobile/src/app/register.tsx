@@ -17,15 +17,48 @@ export default function RegisterScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleRegister = () => {
-    console.log('Register pressed');
-    console.log({
-      name,
-      email,
-      password,
-      confirmPassword,
-    });
+    if (!name.trim()) {
+      console.log('Please enter your name');
+      return;
+    }
+
+    if (!email.trim()) {
+      console.log('Please enter your email');
+      return;
+    }
+
+    if (!email.includes('@')) {
+      console.log('Please enter a valid email');
+      return;
+    }
+
+    if (!password) {
+      console.log('Please enter a password');
+      return;
+    }
+
+    if (password.length < 8) {
+      console.log('Password must be at least 8 characters');
+      return;
+    }
+
+    if (!confirmPassword) {
+      console.log('Please confirm your password');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      console.log('Passwords do not match');
+      return;
+    }
+
+    console.log('Registration form is valid');
+
+    router.replace('/dashboard');
   };
 
   const handleLogin = () => {
@@ -104,9 +137,18 @@ export default function RegisterScreen() {
                 placeholderTextColor="#999999"
                 value={password}
                 onChangeText={setPassword}
-                secureTextEntry
+                secureTextEntry={!showPassword}
                 autoCapitalize="none"
+                autoCorrect={false}
               />
+
+              <Pressable
+                onPress={() => setShowPassword(!showPassword)}
+              >
+                <Text style={styles.passwordToggle}>
+                  {showPassword ? 'Hide' : 'Show'}
+                </Text>
+              </Pressable>
             </View>
 
             {/* Confirm Password */}
@@ -119,9 +161,20 @@ export default function RegisterScreen() {
                 placeholderTextColor="#999999"
                 value={confirmPassword}
                 onChangeText={setConfirmPassword}
-                secureTextEntry
+                secureTextEntry={!showConfirmPassword}
                 autoCapitalize="none"
+                autoCorrect={false}
               />
+
+              <Pressable
+                onPress={() =>
+                  setShowConfirmPassword(!showConfirmPassword)
+                }
+              >
+                <Text style={styles.passwordToggle}>
+                  {showConfirmPassword ? 'Hide' : 'Show'}
+                </Text>
+              </Pressable>
             </View>
 
             {/* Register Button */}
@@ -232,6 +285,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#222222',
     backgroundColor: '#FAFAFA',
+  },
+
+  passwordToggle: {
+    alignSelf: 'flex-end',
+    marginTop: 6,
+    fontSize: 13,
+    fontWeight: '600',
+    color: '#555555',
   },
 
   registerButton: {

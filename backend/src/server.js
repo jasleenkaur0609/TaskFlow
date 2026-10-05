@@ -1,27 +1,33 @@
 const express = require('express');
 const cors = require('cors');
- require('dotenv').config();
+require('dotenv').config();
 
- const app = express();
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
 
- const PORT = process.env.PORT || 5000
+const app = express();
 
- // Middleware
+const PORT = process.env.PORT || 5000;
 
- app.use(cors());
- app.use(express.json());
+// Connect to MongoDB
+connectDB();
 
- // Health Check route
+// Middleware
+app.use(cors());
+app.use(express.json());
 
- app.get('/', (req,res)=>{
-    res.json({
-        success:true,
-        message:"TaskFlow API is running",
-    });
- });
+// Routes
+app.use('/api/auth', authRoutes);
 
- // Start server
+// Health check
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'TaskFlow API is running',
+  });
+});
 
- app.listen(PORT, ()=>{
-    console.log(`TaskFlow API is running on the port ${PORT}`);
- })
+// Start server
+app.listen(PORT, () => {
+  console.log(`TaskFlow API running on port ${PORT}`);
+});
